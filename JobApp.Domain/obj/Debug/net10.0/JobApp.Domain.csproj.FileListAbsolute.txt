@@ -1,0 +1,12 @@
+f:\Ahmed\Digitera Day 3\JobApp.Domain\bin\Debug\net10.0\JobApp.Domain.deps.json
+f:\Ahmed\Digitera Day 3\JobApp.Domain\bin\Debug\net10.0\JobApp.Domain.dll
+f:\Ahmed\Digitera Day 3\JobApp.Domain\bin\Debug\net10.0\JobApp.Domain.pdb
+f:\Ahmed\Digitera Day 3\JobApp.Domain\obj\Debug\net10.0\JobApp.Domain.GeneratedMSBuildEditorConfig.editorconfig
+f:\Ahmed\Digitera Day 3\JobApp.Domain\obj\Debug\net10.0\JobApp.Domain.AssemblyInfoInputs.cache
+f:\Ahmed\Digitera Day 3\JobApp.Domain\obj\Debug\net10.0\JobApp.Domain.AssemblyInfo.cs
+f:\Ahmed\Digitera Day 3\JobApp.Domain\obj\Debug\net10.0\JobApp.Domain.csproj.CoreCompileInputs.cache
+f:\Ahmed\Digitera Day 3\JobApp.Domain\obj\Debug\net10.0\JobApp.Domain.dll
+f:\Ahmed\Digitera Day 3\JobApp.Domain\obj\Debug\net10.0\refint\JobApp.Domain.dll
+f:\Ahmed\Digitera Day 3\JobApp.Domain\obj\Debug\net10.0\JobApp.Domain.pdb
+f:\Ahmed\Digitera Day 3\JobApp.Domain\obj\Debug\net10.0\ref\JobApp.Domain.dll
+F:\Ahmed\Digitera Day 3\JobApp.Domain\obj\Debug\net10.0\JobApp.D.68AF0DC6.Up2Date

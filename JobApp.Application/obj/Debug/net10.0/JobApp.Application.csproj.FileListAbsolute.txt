@@ -1,0 +1,15 @@
+f:\Ahmed\Digitera Day 3\JobApp.Application\bin\Debug\net10.0\JobApp.Application.deps.json
+f:\Ahmed\Digitera Day 3\JobApp.Application\bin\Debug\net10.0\JobApp.Application.dll
+f:\Ahmed\Digitera Day 3\JobApp.Application\bin\Debug\net10.0\JobApp.Application.pdb
+f:\Ahmed\Digitera Day 3\JobApp.Application\bin\Debug\net10.0\JobApp.Domain.dll
+f:\Ahmed\Digitera Day 3\JobApp.Application\bin\Debug\net10.0\JobApp.Domain.pdb
+f:\Ahmed\Digitera Day 3\JobApp.Application\obj\Debug\net10.0\JobApp.Application.csproj.AssemblyReference.cache
+f:\Ahmed\Digitera Day 3\JobApp.Application\obj\Debug\net10.0\JobApp.Application.GeneratedMSBuildEditorConfig.editorconfig
+f:\Ahmed\Digitera Day 3\JobApp.Application\obj\Debug\net10.0\JobApp.Application.AssemblyInfoInputs.cache
+f:\Ahmed\Digitera Day 3\JobApp.Application\obj\Debug\net10.0\JobApp.Application.AssemblyInfo.cs
+f:\Ahmed\Digitera Day 3\JobApp.Application\obj\Debug\net10.0\JobApp.Application.csproj.CoreCompileInputs.cache
+f:\Ahmed\Digitera Day 3\JobApp.Application\obj\Debug\net10.0\JobApp.A.A1F876F5.Up2Date
+f:\Ahmed\Digitera Day 3\JobApp.Application\obj\Debug\net10.0\JobApp.Application.dll
+f:\Ahmed\Digitera Day 3\JobApp.Application\obj\Debug\net10.0\refint\JobApp.Application.dll
+f:\Ahmed\Digitera Day 3\JobApp.Application\obj\Debug\net10.0\JobApp.Application.pdb
+f:\Ahmed\Digitera Day 3\JobApp.Application\obj\Debug\net10.0\ref\JobApp.Application.dll
