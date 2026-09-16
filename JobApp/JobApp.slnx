@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../JobApp.Application/JobApp.Application.csproj" Id="9ff7c814-d2b1-4888-9d00-f471f01de6ca" />
+  <Project Path="../JobApp.Domain/JobApp.Domain.csproj" Id="a9f33562-d188-4e52-a7db-8a63021cd7d7" />
+  <Project Path="../JobApp.Infrastructure/JobApp.Infrastructure.csproj" Id="d9a205f9-06ab-446f-987d-591b36392d0d" />
+  <Project Path="JobApp.csproj" />
+</Solution>
