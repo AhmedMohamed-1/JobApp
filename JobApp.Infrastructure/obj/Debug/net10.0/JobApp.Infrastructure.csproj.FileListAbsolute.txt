@@ -17,3 +17,4 @@ f:\Ahmed\Digitera Day 3\JobApp.Infrastructure\obj\Debug\net10.0\refint\JobApp.In
 f:\Ahmed\Digitera Day 3\JobApp.Infrastructure\obj\Debug\net10.0\JobApp.Infrastructure.pdb
 f:\Ahmed\Digitera Day 3\JobApp.Infrastructure\obj\Debug\net10.0\JobApp.Infrastructure.genruntimeconfig.cache
 f:\Ahmed\Digitera Day 3\JobApp.Infrastructure\obj\Debug\net10.0\ref\JobApp.Infrastructure.dll
+f:\Ahmed\Digitera Day 3\JobApp.Infrastructure\obj\Debug\net10.0\JobApp.Infrastructure.sourcelink.json

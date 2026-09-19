@@ -9,6 +9,7 @@ public interface IJobService
     Task<JobResponseDto> ReactivateJobAsync(int jobId, int userId);
     Task DeleteJobAsync(int jobId, int userId);
     Task<JobApplicationResponseDto> ApplyToJobAsync(int jobId, ApplyJobDto dto, int userId);
+    Task<JobApplicationResponseDto> CancelApplicationAsync(int jobId, int userId);
     Task<IEnumerable<JobResponseDto>> GetAllJobsAsync();
     Task<JobResponseDto?> GetJobByIdAsync(int jobId);
 }

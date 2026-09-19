@@ -64,6 +64,11 @@ public class JobRepository : IJobRepository
             .AnyAsync(ja => ja.JobId == jobId && ja.ApplicantId == applicantId);
     }
 
+    public void UpdateApplication(JobApplication application)
+    {
+        _context.JobApplications.Update(application);
+    }
+
     public async Task SaveChangesAsync()
     {
         await _context.SaveChangesAsync();

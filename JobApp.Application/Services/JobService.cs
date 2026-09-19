@@ -74,6 +74,31 @@ public class JobService : IJobService
         };
     }
 
+    public async Task<JobApplicationResponseDto> CancelApplicationAsync(int jobId, int userId)
+    {
+        var application = await _jobRepository.GetApplicationAsync(jobId, userId);
+        if (application == null)
+        {
+            throw new KeyNotFoundException("Application not found.");
+        }
+
+        if (application.ApplicantId != userId)
+        {
+            throw new UnauthorizedAccessException("Only the applicant can cancel their application.");
+        }
+
+        if (application.Status == JobStatus.Canceleld)
+        {
+            throw new InvalidOperationException("Application is already canceled.");
+        }
+
+        application.Status = JobStatus.Canceleld;
+        _jobRepository.UpdateApplication(application);
+        await _jobRepository.SaveChangesAsync();
+
+        return MapApplicationToDto(application);
+    }
+
     public async Task<JobResponseDto> CancelJobAsync(int jobId, int userId)
     {
         var job = await _jobRepository.GetByIdAsync(jobId);
@@ -164,6 +189,19 @@ public class JobService : IJobService
             Status = job.Status,
             CreatedById = job.CreatedById,
             CreatedAt = job.CreatedAt
+        };
+    }
+
+    private static JobApplicationResponseDto MapApplicationToDto(JobApplication application)
+    {
+        return new JobApplicationResponseDto
+        {
+            Id = application.Id,
+            JobId = application.JobId,
+            ApplicantId = application.ApplicantId,
+            CvLink = application.CvLink,
+            Status = application.Status,
+            AppliedAt = application.AppliedAt
         };
     }
 }

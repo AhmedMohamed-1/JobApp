@@ -14,6 +14,7 @@ public interface IJobRepository
     Task AddApplicationAsync(JobApplication application);
     Task<JobApplication?> GetApplicationAsync(int jobId, int applicantId);
     Task<bool> HasUserAppliedAsync(int jobId, int applicantId);
+    void UpdateApplication(JobApplication application);
 
     Task SaveChangesAsync();
 }

@@ -13,3 +13,4 @@ f:\Ahmed\Digitera Day 3\JobApp.Application\obj\Debug\net10.0\JobApp.Application.
 f:\Ahmed\Digitera Day 3\JobApp.Application\obj\Debug\net10.0\refint\JobApp.Application.dll
 f:\Ahmed\Digitera Day 3\JobApp.Application\obj\Debug\net10.0\JobApp.Application.pdb
 f:\Ahmed\Digitera Day 3\JobApp.Application\obj\Debug\net10.0\ref\JobApp.Application.dll
+f:\Ahmed\Digitera Day 3\JobApp.Application\obj\Debug\net10.0\JobApp.Application.sourcelink.json
