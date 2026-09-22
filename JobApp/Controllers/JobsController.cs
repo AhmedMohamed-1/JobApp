@@ -1,6 +1,8 @@
 using System.Security.Claims;
 using JobApp.Application.DTOs;
-using JobApp.Application.Interfaces;
+using JobApp.Application.Features.Jobs.Commands;
+using JobApp.Application.Features.Jobs.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,11 +17,11 @@ namespace JobApp.Controllers;
 [Produces("application/json")]
 public class JobsController : ControllerBase
 {
-    private readonly IJobService _jobService;
+    private readonly IMediator _mediator;
 
-    public JobsController(IJobService jobService)
+    public JobsController(IMediator mediator)
     {
-        _jobService = jobService;
+        _mediator = mediator;
     }
 
     /// <summary>
@@ -31,7 +33,7 @@ public class JobsController : ControllerBase
     [ProducesResponseType(typeof(IEnumerable<JobResponseDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<JobResponseDto>>> GetAll()
     {
-        var jobs = await _jobService.GetAllJobsAsync();
+        var jobs = await _mediator.Send(new GetAllJobsQuery());
         return Ok(jobs);
     }
 
@@ -47,7 +49,7 @@ public class JobsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<JobResponseDto>> GetById(int id)
     {
-        var job = await _jobService.GetJobByIdAsync(id);
+        var job = await _mediator.Send(new GetJobByIdQuery(id));
         if (job == null) return NotFound(new { message = "Job not found." });
         return Ok(job);
     }
@@ -68,7 +70,7 @@ public class JobsController : ControllerBase
         var userId = GetCurrentUserId();
         if (userId <= 0) return Unauthorized();
 
-        var createdJob = await _jobService.CreateJobAsync(dto, userId);
+        var createdJob = await _mediator.Send(new CreateJobCommand(dto, userId));
         return CreatedAtAction(nameof(GetById), new { id = createdJob.Id }, createdJob);
     }
 
@@ -95,7 +97,7 @@ public class JobsController : ControllerBase
 
         try
         {
-            var application = await _jobService.ApplyToJobAsync(id, dto, userId);
+            var application = await _mediator.Send(new ApplyToJobCommand(id, dto, userId));
             return Ok(application);
         }
         catch (KeyNotFoundException ex)
@@ -137,7 +139,7 @@ public class JobsController : ControllerBase
 
         try
         {
-            var cancelledApp = await _jobService.CancelApplicationAsync(id, userId);
+            var cancelledApp = await _mediator.Send(new CancelApplicationCommand(id, userId));
             return Ok(cancelledApp);
         }
         catch (KeyNotFoundException ex)
@@ -176,7 +178,7 @@ public class JobsController : ControllerBase
 
         try
         {
-            var cancelledJob = await _jobService.CancelJobAsync(id, userId);
+            var cancelledJob = await _mediator.Send(new CancelJobCommand(id, userId));
             return Ok(cancelledJob);
         }
         catch (KeyNotFoundException ex)
@@ -213,7 +215,7 @@ public class JobsController : ControllerBase
 
         try
         {
-            var reactivatedJob = await _jobService.ReactivateJobAsync(id, userId);
+            var reactivatedJob = await _mediator.Send(new ReactivateJobCommand(id, userId));
             return Ok(reactivatedJob);
         }
         catch (KeyNotFoundException ex)
@@ -252,7 +254,7 @@ public class JobsController : ControllerBase
 
         try
         {
-            await _jobService.DeleteJobAsync(id, userId);
+            await _mediator.Send(new DeleteJobCommand(id, userId));
             return NoContent();
         }
         catch (KeyNotFoundException ex)

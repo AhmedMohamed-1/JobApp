@@ -1,5 +1,6 @@
 using JobApp.Application.DTOs;
-using JobApp.Application.Interfaces;
+using JobApp.Application.Features.Auth.Commands;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,11 +14,11 @@ namespace JobApp.Controllers;
 [Produces("application/json")]
 public class AuthController : ControllerBase
 {
-    private readonly IAuthService _authService;
+    private readonly IMediator _mediator;
 
-    public AuthController(IAuthService authService)
+    public AuthController(IMediator mediator)
     {
-        _authService = authService;
+        _mediator = mediator;
     }
 
     /// <summary>
@@ -34,7 +35,7 @@ public class AuthController : ControllerBase
     {
         try
         {
-            var result = await _authService.RegisterAsync(dto);
+            var result = await _mediator.Send(new RegisterCommand(dto));
             return Ok(result);
         }
         catch (InvalidOperationException ex)
@@ -57,7 +58,7 @@ public class AuthController : ControllerBase
     {
         try
         {
-            var result = await _authService.LoginAsync(dto);
+            var result = await _mediator.Send(new LoginCommand(dto));
             return Ok(result);
         }
         catch (InvalidOperationException ex)
@@ -80,7 +81,7 @@ public class AuthController : ControllerBase
     {
         try
         {
-            var result = await _authService.RefreshTokenAsync(dto);
+            var result = await _mediator.Send(new RefreshTokenCommand(dto));
             return Ok(result);
         }
         catch (InvalidOperationException ex)

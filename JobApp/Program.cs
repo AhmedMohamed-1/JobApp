@@ -1,6 +1,6 @@
 using System.Text;
+using JobApp.Application;
 using JobApp.Application.Interfaces;
-using JobApp.Application.Services;
 using JobApp.Infrastructure;
 using JobApp.Infrastructure.Presistence;
 using JobApp.Infrastructure.Repositories;
@@ -19,9 +19,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // 2. Dependency Injection Services
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
-builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJobRepository, JobRepository>();
-builder.Services.AddScoped<IJobService, JobService>();
+builder.Services.AddApplication();
 
 // 3. JWT Authentication Configuration
 var jwtSecret = builder.Configuration["JwtSettings:Secret"] ?? "SuperSecretKeyForJwtTokenGeneration_Digitera123!";
