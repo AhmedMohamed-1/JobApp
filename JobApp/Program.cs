@@ -1,4 +1,5 @@
 using System.Text;
+using Hangfire;
 using JobApp.Application;
 using JobApp.Application.Interfaces;
 using JobApp.Infrastructure;
@@ -21,6 +22,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 builder.Services.AddScoped<IJobRepository, JobRepository>();
 builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 // 3. JWT Authentication Configuration
 var jwtSecret = builder.Configuration["JwtSettings:Secret"] ?? "SuperSecretKeyForJwtTokenGeneration_Digitera123!";
@@ -101,5 +103,12 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseHangfireDashboard("/hangfire");
+}
+
+app.UseHangfireRecurringJobs();
 
 app.Run();

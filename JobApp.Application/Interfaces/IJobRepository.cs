@@ -7,6 +7,7 @@ public interface IJobRepository
     Task<Job?> GetByIdAsync(int id);
     Task<IEnumerable<Job>> GetAllAsync();
     Task<IEnumerable<Job>> GetAllActiveAsync();
+    Task<IReadOnlyList<Job>> GetActiveJobsCreatedBeforeAsync(DateTime createdBeforeUtc);
     Task AddAsync(Job job);
     void Update(Job job);
     void Delete(Job job);

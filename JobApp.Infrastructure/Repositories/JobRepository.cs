@@ -32,6 +32,13 @@ public class JobRepository : IJobRepository
             .ToListAsync();
     }
 
+    public async Task<IReadOnlyList<Job>> GetActiveJobsCreatedBeforeAsync(DateTime createdBeforeUtc)
+    {
+        return await _context.Jobs
+            .Where(j => !j.IsDeleted && j.Status == JobStatus.Active && j.CreatedAt <= createdBeforeUtc)
+            .ToListAsync();
+    }
+
     public async Task AddAsync(Job job)
     {
         await _context.Jobs.AddAsync(job);

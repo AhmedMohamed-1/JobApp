@@ -8,10 +8,17 @@ namespace JobApp.Application.Services;
 public class JobService : IJobService
 {
     private readonly IJobRepository _jobRepository;
+    private readonly IUserRepository _userRepository;
+    private readonly ICandidateNotificationQueue _notificationQueue;
 
-    public JobService(IJobRepository jobRepository)
+    public JobService(
+        IJobRepository jobRepository,
+        IUserRepository userRepository,
+        ICandidateNotificationQueue notificationQueue)
     {
         _jobRepository = jobRepository;
+        _userRepository = userRepository;
+        _notificationQueue = notificationQueue;
     }
 
     public async Task<JobResponseDto> CreateJobAsync(CreateJobDto dto, int userId)
@@ -63,6 +70,12 @@ public class JobService : IJobService
         await _jobRepository.AddApplicationAsync(application);
         await _jobRepository.SaveChangesAsync();
 
+        var applicant = await _userRepository.GetByIdAsync(userId);
+        if (applicant != null)
+        {
+            _notificationQueue.QueueApplicationSubmitted(applicant.Email, job.Title);
+        }
+
         return new JobApplicationResponseDto
         {
             Id = application.Id,
@@ -95,6 +108,13 @@ public class JobService : IJobService
         application.Status = JobStatus.Canceleld;
         _jobRepository.UpdateApplication(application);
         await _jobRepository.SaveChangesAsync();
+
+        var job = await _jobRepository.GetByIdAsync(jobId);
+        var applicant = await _userRepository.GetByIdAsync(userId);
+        if (job != null && applicant != null)
+        {
+            _notificationQueue.QueueApplicationCancelled(applicant.Email, job.Title);
+        }
 
         return MapApplicationToDto(application);
     }
